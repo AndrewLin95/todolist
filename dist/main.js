@@ -1,0 +1,1 @@
+(()=>{"use strict";document.querySelector("#allTaskPage"),document.querySelector("#todayTaskPage"),document.querySelector("#addItemBtn").addEventListener("click",(function(){document.getElementById("addItemForm").style.display="flex"}))})();

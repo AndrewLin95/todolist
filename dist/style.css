@@ -81,7 +81,17 @@ table {
 
 }
 
+/* entire bottom div */
+#bottom{
+    display:flex;
+    border:black 1px solid;
+    width: 100vw;
+    max-width: 99.85%;
+    height: calc(100vh - 5em);
+}
+
 /* all things index column */
+
 #index,
 #topIndex{
     display:flex;
@@ -117,18 +127,117 @@ table {
 #bottomIndex{
     display:flex;
     justify-content: right;
-    padding-bottom: 6em;
+    padding-bottom: 4em;
     width: 25vw;
     border: black 1px solid;
 }
 
 #addItemBtn{
     display:flex;
-    margin-right: 5.5em;
+    margin-right: 5em;
     height: 5em;
     width: 15%;
 }
 
 #addItemBtn:hover{
     background: lightskyblue;
+}
+
+/* all thing pages*/
+#pages{
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    width: 75vw;
+    border: green solid 1px;
+}
+
+
+/* addItemForm popup */
+#addItemForm{
+    position: absolute;
+    top: calc(50vh - (25vh/2));
+    left: calc(50vw - (35vw/2));
+    width: 35vw;
+    height: 25vh;
+    border: lightgray solid 1px;
+
+    display: none;
+}
+
+#formCategorySelector{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1em;
+    gap: 1em;
+    width: 25%;
+}
+
+#formDetails,
+#formInput{
+    display:flex;
+    flex-direction: column;
+    width: 95%;
+    height: 95%;
+}
+
+#formInput{
+    justify-content: space-between;
+}
+
+#inputDetails{
+    padding-top: 1em;
+    vertical-align: top;
+    resize: none;
+}
+
+#formHeader{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+#cancel{
+    width: 7.5%;
+    padding-right: 0.5em;
+}
+
+.subText{
+    font-size: 1.5em;
+    padding-left: 0.5em;
+}
+
+#inputs{
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+}
+
+#submitBtn{
+    width: 7em;
+    height: 2em;
+}
+
+/* general formatting */
+
+input,
+textarea{
+    border: 0px;
+    background: transparent;
+    width: 100%;
+    outline: none;
+}
+
+.index{
+    background-color: #b8bedd;
+}
+
+.header{
+    background-color: #efc3e6;
+}
+
+.mainContent{
+background-color: #f0e6ef;
 }

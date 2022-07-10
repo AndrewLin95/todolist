@@ -7,26 +7,49 @@
   </head>
   <body>
     <div id="content">
-        <div id="navBar">
+        <div id="navBar" class="header">
             <div id="title">To Do List</div>
             <ul id="navLinks">
                 <li>test</li>
                 <li>test 2</li>
             </ul>
         </div>
-        <div id="index">
-            <div id="topIndex">
-                <button class='btn' id="allTaskPage">All Tasks</button>
-                <button class='btn' id="todayTaskPage">Today</button>
-                <button class='btn' id="weeklyTaskPage">Weekly</button>
-                <button class='btn' id="filteredPage">Filters</button>
+        <div id="bottom">
+            <div id="index" class="index">
+                <div id="topIndex">
+                    <button class='btn' id="allTaskPage">All Tasks</button>
+                    <button class='btn' id="todayTaskPage">Today</button>
+                    <button class='btn' id="weeklyTaskPage">Weekly</button>
+                    <button class='btn' id="filteredPage">Filters</button>
+                </div>
+                <div id="bottomIndex">
+                    <button class='btn' id="addItemBtn"><i class="fa-solid fa-circle-plus fa-4x"></i></button>
+                </div>
             </div>
-            <div id="bottomIndex">
-                <button class='btn' id="addItemBtn"><i class="fa-solid fa-circle-plus fa-4x "></i></button>
+            <div id="pages" class="mainContent">
+                <div> test 1</div>
+                test 2
             </div>
-        </div>
-        <div id="page">
-
+            <div id="addItemForm">
+                <div id="formCategorySelector" class="index">
+                    <button class="btn">placeholder 1</button>
+                    <button class="btn">placeholder 2</button>
+                    <button class="btn">placeholder 3</button>
+                </div>
+                <div id="formDetails" class="mainContent">
+                    <div id="formHeader" class="header">  
+                        <div class="subText">Create a New...</div>
+                        <button class='btn' id="cancel"><i class="fa-solid fa-xmark fa-2x"></i></button>
+                    </div>
+                    <form id="formInput" onsubmit='return false'>
+                        <div id="inputs">
+                            <input id='inputTitle' type="text" placeholder="Title: Groceries"/>
+                            <textarea id='inputDetails' placeholder="Details: e.x milk, eggs, banana" rows="10" cols="50"></textarea>
+                        </div>
+                        <button id="submitBtn" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>
