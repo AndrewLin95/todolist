@@ -82,14 +82,22 @@ table {
 }
 
 /* all things index column */
-#index{
+#index,
+#topIndex{
     display:flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2em;
     width: 25vw;
+}
+
+#index{
+    justify-content: space-between;
     height: 100%;
     border:black 1px solid;
+}
+
+#topIndex{
+    padding-top: 2em;
     gap: 1em;
 }
 
@@ -104,4 +112,23 @@ table {
 
 .btn:hover{
     background: lightgray;
+}
+
+#bottomIndex{
+    display:flex;
+    justify-content: right;
+    padding-bottom: 6em;
+    width: 25vw;
+    border: black 1px solid;
+}
+
+#addItemBtn{
+    display:flex;
+    margin-right: 5.5em;
+    height: 5em;
+    width: 15%;
+}
+
+#addItemBtn:hover{
+    background: lightskyblue;
 }
