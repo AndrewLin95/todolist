@@ -250,3 +250,47 @@ textarea{
 .mainContent{
 background-color: #f0e6ef;
 }
+
+.transparent{
+    background: transparent;
+    border: 0px;
+}
+
+/* card formatting */
+
+#allTasks{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    margin: 2vh 2vw;
+}
+
+.cardDiv{
+    display: flex;
+    justify-content: space-between;
+    border: black solid 1px;
+    height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    align-items: center;
+}
+
+.sideCardDiv{
+    display: flex;
+    gap: 1em;
+    justify-items: center;
+    height: 2em;
+    border: black 1px solid;
+}
+
+.cardText{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.completeCheckBox{
+    width: auto;
+    height: auto;
+    border:#b8bedd solid 1px;
+}
