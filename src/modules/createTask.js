@@ -2,17 +2,6 @@ let tasks = [
     {title: 'test', detail: 'detail test', priority: 'priority test', date: 'date test'},
 ];
 
-
-function pullTaskInfo(){
-    const titleInfo = document.querySelector('#inputTitle');
-    const inputDetails = document.querySelector('#inputDetails');
-    const prioritybtns = document.querySelectorAll('.priorityBtn');
-    const taskDates = document.querySelector('#dateInput');
-    let newTask = new createItem(titleInfo.value, inputDetails.value, prioritybtns, taskDates.value);
-    tasks.push(newTask);
-    return tasks[tasks.length-1]
-}
-
 class createItem{
     constructor(title, details, priority, date){
         this.title = title;
@@ -22,6 +11,23 @@ class createItem{
     }
 }
 
+function pullTaskInfo(){
+    const titleInfo = document.querySelector('#inputTitle');
+    const inputDetails = document.querySelector('#inputDetails');
+    const priorityOptions = document.querySelector('#priorityOptions');
+    const taskDates = document.querySelector('#dateInput');
+
+    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, taskDates.value);
+    tasks.push(newTask);
+    console.table(tasks);
+}
+
+function returnLastTask() {
+    return tasks[tasks.length-1]
+}
 
 
-export {pullTaskInfo};
+
+
+
+export {pullTaskInfo, returnLastTask};
