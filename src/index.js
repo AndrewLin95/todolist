@@ -1,6 +1,6 @@
 import {addItemDisplayOn, closeForm, formReset} from './modules/display';
-import {pullTaskInfo} from './modules/createTask';
-import { createCard } from './modules/allTasks';
+import {pullTaskInfo, returnLastTask} from './modules/createTask';
+import {createCard} from './modules/allTasks';
 
 const allTaskPageBtn = document.querySelector('#allTaskPage');
 const todayPage = document.querySelector('#todayTaskPage');
@@ -13,8 +13,11 @@ addItemBtn.addEventListener('click', addItemDisplayOn);
 closeFormBtn.addEventListener('click', closeForm);
 
 
-
+// on submit, pulls the info from the form and pushes it to an array for all tasks.
+// card gets created based on the last task inputted into the array
+// submission form gets reset
 form.addEventListener('submit', () => {
-    createCard(pullTaskInfo().title, pullTaskInfo().detail, pullTaskInfo().date);
+    pullTaskInfo();
+    createCard(returnLastTask().title, returnLastTask().detail, returnLastTask().date);
     formReset();
 });
