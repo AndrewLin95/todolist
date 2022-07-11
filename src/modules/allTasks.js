@@ -7,16 +7,56 @@ function createCard(title, detail, date) {
     cardDiv.className = 'cardDiv';
     allTasksDiv.appendChild(cardDiv);
 
-    // create complete checkbox
+    // create left side of card Div
+    const leftCardDiv = document.createElement('div');
+    leftCardDiv.className = 'sideCardDiv';
+    cardDiv.appendChild(leftCardDiv);
+
+    // create complete checkbox to left side of card
     const completeBox = document.createElement('input');
+    completeBox.className = 'completeCheckBox';
     completeBox.setAttribute('type', 'checkbox');
-    cardDiv.appendChild(completeBox);
+    leftCardDiv.appendChild(completeBox);
 
-    // adding title information to card
-    const titleText = document.createElement('span');
+    // adding title information to left side of card
+    const titleText = document.createElement('div');
+    titleText.className = 'cardText';
     titleText.textContent = title;
-    cardDiv.appendChild(titleText);
+    leftCardDiv.appendChild(titleText);
 
+    // create right side of card Div
+    const rightCardDiv = document.createElement('div');
+    rightCardDiv.className = 'sideCardDiv';
+    cardDiv.appendChild(rightCardDiv);
+
+    // add details to the right side of the card  div
+    const detailBtn = document.createElement('button');
+    detailBtn.className = 'detailBtn';
+    rightCardDiv.appendChild(detailBtn);
+    detailBtn.textContent = 'Details';
+        // create call to function to show details in a pop up once clicked
+
+    // add date to the right side of the card  div
+    const taskDate = document.createElement('div');
+    taskDate.className = 'taskDate cardText';
+    rightCardDiv.appendChild(taskDate);
+    taskDate.textContent = date;
+
+    // create Edit Button
+    const editBtn = document.createElement('button');
+    editBtn.className ='editBtn transparent';
+    const editIcon = document.createElement('i');
+    editIcon.className = "fa-solid fa-pen-to-square"
+    editBtn.appendChild(editIcon);
+    rightCardDiv.appendChild(editBtn);
+
+    // create Delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className ='deleteBtn transparent';
+    const deleteIcon = document.createElement('i');
+    deleteIcon.className = "fa-solid fa-trash-can"
+    deleteBtn.appendChild(deleteIcon);
+    rightCardDiv.appendChild(deleteBtn);
 }
 
 export {
