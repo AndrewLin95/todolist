@@ -129,7 +129,6 @@ table {
     justify-content: right;
     padding-bottom: 4em;
     width: 25vw;
-    border: black 1px solid;
 }
 
 #addItemBtn{
@@ -149,7 +148,6 @@ table {
     flex-direction: column;
     height: 100%;
     width: 75vw;
-    border: green solid 1px;
 }
 
 
@@ -213,6 +211,17 @@ table {
 #inputs{
     padding-left: 0.5em;
     padding-top: 0.5em;
+}
+
+#formBottom{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0.5em;
+}
+
+#date{
+    padding-top: 0.25em;
+    width: 7em;
 }
 
 #submitBtn{

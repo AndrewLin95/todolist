@@ -27,8 +27,9 @@
                 </div>
             </div>
             <div id="pages" class="mainContent">
-                <div> test 1</div>
-                test 2
+                
+                <div id="allTasks"></div>
+
             </div>
             <div id="addItemForm">
                 <div id="formCategorySelector" class="index">
@@ -46,7 +47,20 @@
                             <input id='inputTitle' type="text" placeholder="Title: Groceries"/>
                             <textarea id='inputDetails' placeholder="Details: e.x milk, eggs, banana" rows="10" cols="50"></textarea>
                         </div>
-                        <button id="submitBtn" type="submit">Submit</button>
+                        <div id="formBottom">
+                            <div id="leftFormBottom">
+                                <div id="priority">
+                                    Priority:
+                                    <button class="priorityBtn">Low</button>
+                                    <button class="priorityBtn">Medium</button>
+                                    <button class="priorityBtn">High</button>
+                                </div>
+                                <div id="date">
+                                    <input id='dateInput' type="date" value="2022-01-01"/>
+                                </div>
+                            </div>
+                            <button id="submitBtn" type="submit">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
