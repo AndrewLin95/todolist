@@ -268,11 +268,11 @@ background-color: #f0e6ef;
 .cardDiv{
     display: flex;
     justify-content: space-between;
-    border: black solid 1px;
     height: 3em;
     padding-left: 1em;
     padding-right: 1em;
     align-items: center;
+    background-color: #EDEDE9;
 }
 
 .sideCardDiv{
@@ -280,7 +280,6 @@ background-color: #f0e6ef;
     gap: 1em;
     justify-items: center;
     height: 2em;
-    border: black 1px solid;
 }
 
 .cardText{
