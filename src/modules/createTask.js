@@ -1,4 +1,5 @@
-import { format } from 'date-fns';
+import { add, format, parseISO } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import { createCard } from "./allTasks";
 
 let tasks = [];
@@ -18,9 +19,11 @@ function pullTaskInfo(){
     const priorityOptions = document.querySelector('#priorityOptions');
     const taskDates = document.querySelector('#dateInput');
 
-    let date = format(new Date(taskDates.value), 'PPP');
+    let isoDateUTC = taskDates.value + "T:14:00:00";
+    let dateEST = formatInTimeZone(isoDateUTC, 'Canada/Eastern','yyyy-MM-dd')
+    let formattedDate = format(new Date(parseISO(dateEST)), "PPPP");
 
-    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, date);
+    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate);
     tasks.push(newTask);
 }
 
