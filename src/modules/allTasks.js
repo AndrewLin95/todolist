@@ -57,6 +57,10 @@ function createCard(title, detail, date) {
     deleteIcon.className = "fa-solid fa-trash-can"
     deleteBtn.appendChild(deleteIcon);
     rightCardDiv.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener('click', () => {
+        allTasksDiv.removeChild(cardDiv);
+    })
 }
 
 export {

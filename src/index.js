@@ -1,9 +1,10 @@
-import {addItemDisplayOn, closeForm, formReset} from './modules/display';
+import {addItemDisplayOn, closeForm, formReset, clearPage} from './modules/display';
 import {pullTaskInfo, returnLastTask} from './modules/createTask';
 import {createCard} from './modules/allTasks';
 
 const allTaskPageBtn = document.querySelector('#allTaskPage');
 const todayPage = document.querySelector('#todayTaskPage');
+const lowPriorityPage = document.querySelector('#lowPriorityPage');
 const addItemBtn = document.querySelector('#addItemBtn');
 const closeFormBtn = document.querySelector('#cancel');
 const form = document.querySelector('#formInput');
@@ -20,4 +21,8 @@ form.addEventListener('submit', () => {
     pullTaskInfo();
     createCard(returnLastTask().title, returnLastTask().detail, returnLastTask().date);
     formReset();
+});
+
+lowPriorityPage.addEventListener('click', () => {
+    clearPage();
 });
