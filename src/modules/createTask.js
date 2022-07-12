@@ -1,8 +1,7 @@
+import { format } from 'date-fns';
 import { createCard } from "./allTasks";
 
-let tasks = [
-    {title: 'test', detail: 'detail test', priority: 'priority test', date: 'date test'},
-];
+let tasks = [];
 
 class createItem{
     constructor(title, detail, priority, date){
@@ -19,9 +18,10 @@ function pullTaskInfo(){
     const priorityOptions = document.querySelector('#priorityOptions');
     const taskDates = document.querySelector('#dateInput');
 
-    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, taskDates.value);
+    let date = format(new Date(taskDates.value), 'PPP');
+
+    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, date);
     tasks.push(newTask);
-    console.table(tasks);
 }
 
 function returnArray(arrayType) {

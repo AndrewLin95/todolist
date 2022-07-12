@@ -13,7 +13,6 @@ function formReset(){
 }
 
 function clearPage(){
-    console.log('test');
     let allTasks = document.getElementById('allTasks');
     let eachCard = document.querySelectorAll('.cardDiv')
     
