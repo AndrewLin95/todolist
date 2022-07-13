@@ -1,5 +1,5 @@
 import { addItemDisplayOn, closeForm, formReset, clearPage } from './modules/display';
-import { pullTaskInfo, returnArray, taskFilter, generateFilteredCards, generateAllCards } from './modules/createTask';
+import { pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, generateAllCards } from './modules/createTask';
 import { createCard } from './modules/allTasks';
 
 const allTaskPageBtn = document.querySelector('#allTaskPage');
@@ -53,3 +53,6 @@ pageFilters.forEach((page) => {
         }
     })
 });
+
+// populates the page based on the localStorage value of the array
+pageInitialize();

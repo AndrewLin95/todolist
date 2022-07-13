@@ -31,7 +31,16 @@ function pullTaskInfo(){
 
     let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate, identifier);
     tasks.push(newTask);
-    console.log(tasks);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function pageInitialize() {
+    if (!localStorage.getItem('tasks')) {
+        return;
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+        generateAllCards();
+    }
 }
 
 function returnArray(arrayType) {
@@ -85,6 +94,7 @@ function deleteTasks(uniqueIdentifier) {
         return value.identifier === uniqueIdentifier;
     }
     tasks.splice(tasks.findIndex(checkIdentifier), 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-export {pullTaskInfo, returnArray, taskFilter, generateFilteredCards, generateAllCards, deleteTasks};
+export {pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, generateAllCards, deleteTasks};
