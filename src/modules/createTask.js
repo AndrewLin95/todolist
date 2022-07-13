@@ -1,15 +1,16 @@
-import { add, format, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import { createCard } from "./allTasks";
 
 let tasks = [];
 
 class createItem{
-    constructor(title, detail, priority, date){
+    constructor(title, detail, priority, date, identifier){
         this.title = title;
         this.detail = detail;
         this.priority = priority;
         this.date = date;
+        this.identifier = identifier;
     }
 }
 
@@ -19,12 +20,18 @@ function pullTaskInfo(){
     const priorityOptions = document.querySelector('#priorityOptions');
     const taskDates = document.querySelector('#dateInput');
 
-    let isoDateUTC = taskDates.value + "T:14:00:00";
+    // takes the date in 2022-01-01 format and updates it to an iso date
+    // formatted date uses date-fns to format the date to the "PPPP" format giving us the day of the week, and full date.
+    let isoDateUTC = taskDates.value + "T:14:00:00";                                    
     let dateEST = formatInTimeZone(isoDateUTC, 'Canada/Eastern','yyyy-MM-dd')
     let formattedDate = format(new Date(parseISO(dateEST)), "PPPP");
 
-    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate);
+    // generates a random number as the task identifier. Will be used to delete or modify the card
+    let identifier = Math.floor(Math.random()*1000000)
+
+    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate, identifier);
     tasks.push(newTask);
+    console.log(tasks);
 }
 
 function returnArray(arrayType) {
@@ -73,4 +80,11 @@ function generateAllCards() {
     }
 }
 
-export {pullTaskInfo, returnArray, taskFilter, generateFilteredCards, generateAllCards};
+function deleteTasks(uniqueIdentifier) {
+    function checkIdentifier(value) {
+        return value.identifier === uniqueIdentifier;
+    }
+    tasks.splice(tasks.findIndex(checkIdentifier), 1);
+}
+
+export {pullTaskInfo, returnArray, taskFilter, generateFilteredCards, generateAllCards, deleteTasks};

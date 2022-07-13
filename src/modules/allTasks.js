@@ -1,7 +1,8 @@
+import { deleteTasks } from "./createTask";
 
 const allTasksDiv = document.querySelector('#allTasks');
 
-function createCard(title, detail, date) {
+function createCard(title, detail, date, identifier) {
     // create cardDiv
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cardDiv';
@@ -60,6 +61,7 @@ function createCard(title, detail, date) {
 
     deleteBtn.addEventListener('click', () => {
         allTasksDiv.removeChild(cardDiv);
+        deleteTasks(identifier);
     })
 }
 
