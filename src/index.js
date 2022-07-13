@@ -1,6 +1,6 @@
-import {addItemDisplayOn, closeForm, formReset, clearPage} from './modules/display';
-import {pullTaskInfo, returnArray, taskFilter, generateFilteredCards, generateAllCards} from './modules/createTask';
-import {createCard} from './modules/allTasks';
+import { addItemDisplayOn, closeForm, formReset, clearPage } from './modules/display';
+import { pullTaskInfo, returnArray, taskFilter, generateFilteredCards, generateAllCards } from './modules/createTask';
+import { createCard } from './modules/allTasks';
 
 const allTaskPageBtn = document.querySelector('#allTaskPage');
 const pageFilters = document.querySelectorAll('.pageFilters')
@@ -19,7 +19,7 @@ closeFormBtn.addEventListener('click', closeForm);
 // if i press the submit button, goes to main page??
 form.addEventListener('submit', () => {
     pullTaskInfo();
-    createCard(returnArray('last').title, returnArray('last').detail, returnArray('last').date);
+    createCard(returnArray('last').title, returnArray('last').detail, returnArray('last').date, returnArray('last').identifier);
     formReset();
 });
 
