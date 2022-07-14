@@ -1,4 +1,4 @@
-import { deleteTasks } from "./createTask";
+import { deleteTasks } from "./taskManipulation";
 
 const allTasksDiv = document.querySelector('#allTasks');
 

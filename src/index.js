@@ -1,8 +1,9 @@
 import { addItemDisplayOn, closeForm, formReset, clearPage } from './modules/display';
-import { pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, generateAllCards } from './modules/createTask';
-import { createCard } from './modules/allTasks';
+import { pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards } from './modules/taskManipulation';
+import { createCard } from './modules/tasksDOM';
 
 const allTaskPageBtn = document.querySelector('#allTaskPage');
+const pageSorts = document.querySelectorAll('.pageSorts');
 const pageFilters = document.querySelectorAll('.pageFilters')
 const addItemBtn = document.querySelector('#addItemBtn');
 const closeFormBtn = document.querySelector('#cancel');
@@ -28,29 +29,41 @@ allTaskPageBtn.addEventListener('click', () => {
     generateAllCards();
 })
 
+// can implement a reverse sort too. Need CSS / styling changes first
+
+pageSorts.forEach((page) => {
+    page.addEventListener('click', () => {
+        let sort = page.id;
+        clearPage();
+        switch (sort) {
+            case 'dateSort':
+                taskSort('date');
+                break;
+            case 'prioritySort':
+                taskSort('priority');
+                break;
+        }
+    })
+});
+
 pageFilters.forEach((page) => {
     page.addEventListener('click', () => {
         let filter = page.id;
+        clearPage();
         switch (filter) {                       // if i just remove the add button, it wont need to automatically refresh.... add only available on main page :D
             case 'lowPriorityPage':
-                clearPage();
                 taskFilter('low');
-                generateFilteredCards();
                 break;
             case 'mediumPriorityPage':
-                clearPage();
                 taskFilter('medium');
-                generateFilteredCards();
                 break;
             case 'highPriorityPage':
-                clearPage();
                 taskFilter('high');
-                generateFilteredCards();
                 break;
             default:
-                console.log('default');
                 break;
         }
+        generateFilteredCards();
     })
 });
 
