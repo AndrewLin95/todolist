@@ -250,10 +250,13 @@ table {
     flex-direction: column;
     gap: 1.5em;
     margin: 2vh 2vw;
+    height: 95%;
+    overflow-y: auto;
 }
 
 .cardDiv{
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
     height: 4em;
     padding-right: 1em;
@@ -284,7 +287,7 @@ table {
 }
 
 .taskDate{
-    width: 10em;
+    width: 14em;
 }
 
 .allTextDiv{
