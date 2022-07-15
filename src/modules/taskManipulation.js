@@ -30,18 +30,9 @@ function pullTaskInfo(){
     // generates a random number as the task identifier. Will be used to delete or modify the card
     let identifier = Math.floor(Math.random()*1000000)
 
-    // formatted the priorty to allow for easier sorting
-    let priorityFormatted = '';
-    if (priorityOptions.value === 'Low'){
-        priorityFormatted = '1Low';
-    } else if (priorityOptions.value === 'Medium'){
-        priorityFormatted = '2Medium';
-    } else if (priorityOptions.value === 'High'){
-        priorityFormatted = '3High'
-    }
-    console.log(priorityFormatted);
+    console.log(priorityOptions.value)
 
-    let newTask = new CreateItem(titleInfo.value, inputDetails.value, priorityFormatted, formattedDate, taskDates.value, identifier);
+    let newTask = new CreateItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate, taskDates.value, identifier);
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
     console.log(tasks);
@@ -71,17 +62,17 @@ function taskFilter(filter) {
     switch (filter) {
         case 'low':
             filteredArray = tasks.filter((task) => {
-                return task.priority === '1Low';         // these are caps because when the priority is saved in the array, it takes the input from the dropdownlist (presented in caps)
+                return task.priority === '1';  
             });
             break;
         case 'medium':
             filteredArray = tasks.filter((task) => {
-                return task.priority === '2Medium';
+                return task.priority === '2';
             });
             break;
         case 'high':
             filteredArray = tasks.filter((task) => {
-                return task.priority === '3High';
+                return task.priority === '3';
             });
     }
 }
@@ -89,7 +80,7 @@ function taskFilter(filter) {
 function generateFilteredCards() {
     let i = 0;
     while (i < filteredArray.length){
-        createCard(filteredArray[i].title, filteredArray[i].detail, filteredArray[i].date);
+        createCard(filteredArray[i].title, filteredArray[i].detail, filteredArray[i].date, filteredArray[i].identifier, filteredArray[i].priority);
         i++;
     }
 }
@@ -103,23 +94,14 @@ function taskSort(sort) {
         });
         let i = 0;
         while (i < sortedDates.length){
-            createCard(sortedDates[i].title, sortedDates[i].detail, sortedDates[i].date);
+            createCard(sortedDates[i].title, sortedDates[i].detail, sortedDates[i].date, sortedDates[i].identifier, sortedDates[i].priority);
             i++;
         }
     } else if (sort === 'priority'){
-        let sortedPriorities = tasks.sort(function compare(a, b){
-            if (a.priority > b.priority){
-                return 1;
-            }
-            if (a.priority < b.priority){
-                return -1;
-            }
-            return 0;
-        });
-        console.log(sortedPriorities);
+        let sortedPriorities = tasks.sort(function compare(a, b){return a.priority - b.priority});
         let i = 0;
         while (i < sortedPriorities.length){
-            createCard(sortedPriorities[i].title, sortedPriorities[i].detail, sortedPriorities[i].date);
+            createCard(sortedPriorities[i].title, sortedPriorities[i].detail, sortedPriorities[i].date, sortedPriorities[i].identifier, sortedPriorities[i].priority);
             i++;
         }
     }
@@ -128,7 +110,7 @@ function taskSort(sort) {
 function generateAllCards() {
     let i = 0;
     while (i < tasks.length){
-        createCard(tasks[i].title, tasks[i].detail, tasks[i].date);
+        createCard(tasks[i].title, tasks[i].detail, tasks[i].date, tasks[i].identifier, tasks[i].priority);
         i++;
     }
 }
