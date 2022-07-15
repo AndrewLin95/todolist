@@ -31,6 +31,32 @@ function createCard(title, detail, date, identifier, priority) {
     completeBox.setAttribute('type', 'checkbox');
     leftCardDiv.appendChild(completeBox);
 
+    let tickBoxCheck = false;
+    completeBox.addEventListener('click', () => {
+        if (!tickBoxCheck){
+            detailBtn.className = 'detailBtn checked';
+            editBtn.className ='editBtn transparent checked';
+            deleteBtn.className ='deleteBtn transparent checked';
+            titleText.style.textDecoration = 'line-through';
+            titleText.style.opacity = '0.5';
+            detailText.style.textDecoration = 'line-through';
+            detailText.style.opacity = '0.5';
+            taskDate.style.textDecoration = 'line-through';
+            taskDate.style.opacity = '0.5';
+        } else {
+            detailBtn.className = 'detailBtn';
+            editBtn.className ='editBtn transparent';
+            deleteBtn.className ='deleteBtn transparent';
+            titleText.style.textDecoration = 'none';
+            titleText.style.opacity = '1';
+            detailText.style.textDecoration = 'none';
+            detailText.style.opacity = '1';
+            taskDate.style.textDecoration = 'none';
+            taskDate.style.opacity = '1';
+        }
+        tickBoxCheck = !tickBoxCheck;
+    })
+
     // create a div for the text and details.
     const allTextDiv = document.createElement('div');
     allTextDiv.className = 'allTextDiv';

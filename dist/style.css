@@ -135,10 +135,10 @@ table {
 #bottomMain{
     position: absolute;
     bottom: 3em;
-    right: 1em;
+    right: 5em;
     display:flex;
     justify-content: right;
-    width: 25vw;
+    width: 100px;
 }
 
 #addItemBtn{
@@ -366,4 +366,8 @@ background-color: #E2EAFC;
 
 a, a:visited, a:active {
     color: inherit;
+}
+
+.checked{
+    opacity: 0.5;
 }
