@@ -2,7 +2,7 @@ import { deleteTasks } from "./taskManipulation";
 
 const allTasksDiv = document.querySelector('#allTasks');
 
-function createCard(title, detail, date, identifier) {
+function createCard(title, detail, date, identifier, priority) {
     // create cardDiv
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cardDiv';
@@ -10,8 +10,20 @@ function createCard(title, detail, date, identifier) {
 
     // create left side of card Div
     const leftCardDiv = document.createElement('div');
-    leftCardDiv.className = 'sideCardDiv';
+    leftCardDiv.className = 'sideCardDiv left';
     cardDiv.appendChild(leftCardDiv);
+
+    const priorityDiv = document.createElement('div');
+    priorityDiv.className = 'priorityDiv';
+    leftCardDiv.appendChild(priorityDiv);
+    console.log(priority);
+    if (priority === '1'){
+        priorityDiv.style.backgroundColor = 'green';
+    } else if (priority === '2'){
+        priorityDiv.style.backgroundColor = 'orange';
+    } else if (priority === '3'){
+        priorityDiv.style.backgroundColor = 'red';
+    }
 
     // create complete checkbox to left side of card
     const completeBox = document.createElement('input');
@@ -19,11 +31,23 @@ function createCard(title, detail, date, identifier) {
     completeBox.setAttribute('type', 'checkbox');
     leftCardDiv.appendChild(completeBox);
 
+    // create a div for the text and details.
+    const allTextDiv = document.createElement('div');
+    allTextDiv.className = 'allTextDiv';
+    leftCardDiv.appendChild(allTextDiv);
+
     // adding title information to left side of card
     const titleText = document.createElement('div');
-    titleText.className = 'cardText';
+    titleText.className = `cardText`;
+    titleText.id = `cardText${identifier}`;
     titleText.textContent = title;
-    leftCardDiv.appendChild(titleText);
+    allTextDiv.appendChild(titleText);
+
+    const detailText = document.createElement('div');
+    detailText.className = 'detailText';
+    detailText.id = `detailText${identifier}`;
+    detailText.textContent = detail;
+    allTextDiv.appendChild(detailText);
 
     // create right side of card Div
     const rightCardDiv = document.createElement('div');
@@ -35,7 +59,32 @@ function createCard(title, detail, date, identifier) {
     detailBtn.className = 'detailBtn';
     rightCardDiv.appendChild(detailBtn);
     detailBtn.textContent = 'Details';
-        // create call to function to show details in a pop up once clicked
+
+    let clickDetect = false;
+
+    detailBtn.addEventListener('mouseenter' , () => {
+        if (!clickDetect){
+            document.getElementById(`detailText${identifier}`).style.display = 'block';
+            document.getElementById(`cardText${identifier}`).style.top = '0%'; 
+        }
+    })
+    detailBtn.addEventListener('mouseleave', () => {
+        if (!clickDetect){
+            document.getElementById(`detailText${identifier}`).style.display = 'none';
+            document.getElementById(`cardText${identifier}`).style.top = '15%'; 
+        }
+    })
+
+    detailBtn.addEventListener('click', () => {
+        if (!clickDetect){
+            document.getElementById(`detailText${identifier}`).style.display = 'block';
+            document.getElementById(`cardText${identifier}`).style.top = '0%'; 
+        } else {
+            document.getElementById(`detailText${identifier}`).style.display = 'none';
+            document.getElementById(`cardText${identifier}`).style.top = '15%'; 
+        }
+        clickDetect = !clickDetect;
+    })
 
     // add date to the right side of the card  div
     const taskDate = document.createElement('div');
