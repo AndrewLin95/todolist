@@ -57,6 +57,7 @@ function createCard(title, detail, date, identifier, priority) {
     // add details to the right side of the card  div
     const detailBtn = document.createElement('button');
     detailBtn.className = 'detailBtn';
+    detailBtn.id = `detailBtn${identifier}`;
     rightCardDiv.appendChild(detailBtn);
     detailBtn.textContent = 'Details';
 
@@ -77,9 +78,11 @@ function createCard(title, detail, date, identifier, priority) {
 
     detailBtn.addEventListener('click', () => {
         if (!clickDetect){
+            document.getElementById(`detailBtn${identifier}`).style.boxShadow = '1px 1px 10px 1px #9381FF';
             document.getElementById(`detailText${identifier}`).style.display = 'block';
             document.getElementById(`cardText${identifier}`).style.top = '0%'; 
         } else {
+            document.getElementById(`detailBtn${identifier}`).style.boxShadow = '';
             document.getElementById(`detailText${identifier}`).style.display = 'none';
             document.getElementById(`cardText${identifier}`).style.top = '15%'; 
         }

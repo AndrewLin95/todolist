@@ -171,6 +171,7 @@ table {
     border: lightgray solid 1px;
 
     display: none;
+    box-shadow: 1px 1px 100px 40px rgba(226, 234, 252, 1);
 }
 
 #formCategorySelector{
@@ -324,6 +325,16 @@ table {
     width: auto;
     height: auto;
     border:#b8bedd solid 1px;
+}
+
+.detailBtn{
+    background-color: transparent;
+    border: #B8B8FF solid 2px;
+    border-radius: 10%;
+}
+
+.detailBtn:hover{
+    box-shadow: 1px 1px 10px 1px #9381FF;
 }
 
 /* general formatting */
