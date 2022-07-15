@@ -1,5 +1,3 @@
-
-
 function addItemDisplayOn() {
     document.getElementById('addItemForm').style.display = 'flex';
 }

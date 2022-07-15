@@ -8,9 +8,35 @@ const pageFilters = document.querySelectorAll('.pageFilters')
 const addItemBtn = document.querySelector('#addItemBtn');
 const closeFormBtn = document.querySelector('#cancel');
 const form = document.querySelector('#formInput');
+const sortBtn = document.querySelector('#sortPage');
+const filterBtn = document.querySelector('#filteredPage');
 
 addItemBtn.addEventListener('click', addItemDisplayOn);
 closeFormBtn.addEventListener('click', closeForm);
+
+sortBtn.addEventListener('click', () => {
+    let x = document.getElementById('dateSort');
+    if (x.style.display === 'none'){
+        document.getElementById('dateSort').style.display = 'block';
+        document.getElementById('prioritySort').style.display = 'block';
+    } else {
+        document.getElementById('dateSort').style.display = 'none';
+        document.getElementById('prioritySort').style.display = 'none';
+    }
+})
+
+filterBtn.addEventListener('click', () => {
+    let x = document.getElementById('lowPriorityPage');
+    if (x.style.display === 'none'){
+        document.getElementById('lowPriorityPage').style.display = 'block';
+        document.getElementById('mediumPriorityPage').style.display = 'block';
+        document.getElementById('highPriorityPage').style.display = 'block';
+    } else {
+        document.getElementById('lowPriorityPage').style.display = 'none';
+        document.getElementById('mediumPriorityPage').style.display = 'none';
+        document.getElementById('highPriorityPage').style.display = 'none';
+    }
+})
 
 
 // on submit, pulls the info from the form and pushes it to an array for all tasks.
