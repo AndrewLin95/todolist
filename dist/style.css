@@ -98,7 +98,7 @@ table {
     display:flex;
     flex-direction: column;
     align-items: center;
-    width: 25vw;
+    width: 15vw;
 }
 
 #index{
@@ -132,10 +132,12 @@ table {
     background: lightgray;
 }
 
-#bottomIndex{
+#bottomMain{
+    position: absolute;
+    bottom: 3em;
+    right: 1em;
     display:flex;
     justify-content: right;
-    padding-bottom: 4em;
     width: 25vw;
 }
 
@@ -155,9 +157,8 @@ table {
     display:flex;
     flex-direction: column;
     height: 100%;
-    width: 75vw;
+    width: 85vw;
 }
-
 
 /* addItemForm popup */
 #addItemForm{
@@ -254,11 +255,25 @@ table {
 .cardDiv{
     display: flex;
     justify-content: space-between;
-    height: 3em;
-    padding-left: 1em;
+    height: 4em;
     padding-right: 1em;
     align-items: center;
     background-color: #D7E3FC;
+}
+
+.sideCardDiv.left{
+    display:flex;
+    flex: auto;
+    min-width: 0;
+}
+
+.priorityDiv{
+    position: relative;
+    bottom: 1em;
+    height: 200%;
+    width: 0.3em;
+    background-color: none;
+    flex: none;
 }
 
 .sideCardDiv{
@@ -269,16 +284,34 @@ table {
 }
 
 .taskDate{
-    width: 13em;
+    width: 10em;
+}
+
+.allTextDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    height: 3em;
+}
+
+.cardText,
+.detailText{
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1em;
+}
+
+.detailText{
+    display: none;
+    font-size: 0.9em;
 }
 
 .cardText{
-    display:flex;
-    align-items: center;
-    word-wrap: normal;
-    min-width: 10em;
-    max-width: 30em;
-    text-overflow: ellipsis;
+    position: relative;
+    top: 15%;
 }
 
 .completeCheckBox{
