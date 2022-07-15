@@ -46,7 +46,7 @@ filterBtn.addEventListener('click', () => {
 // if i press the submit button, goes to main page??
 form.addEventListener('submit', () => {
     pullTaskInfo();
-    createCard(returnArray('last').title, returnArray('last').detail, returnArray('last').date, returnArray('last').identifier);
+    createCard(returnArray('last').title, returnArray('last').detail, returnArray('last').date, returnArray('last').identifier, returnArray('last').priority);
     formReset();
 });
 
