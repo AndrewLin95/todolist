@@ -16,27 +16,27 @@ closeFormBtn.addEventListener('click', closeForm);
 
 sortBtn.addEventListener('click', () => {
     let x = document.getElementById('dateSort');
-    if (x.style.display === 'none'){
-        document.getElementById('dateSort').style.display = 'block';
-        document.getElementById('prioritySort').style.display = 'block';
-    } else {
+    if (x.style.display === 'block'){
         document.getElementById('dateSort').style.display = 'none';
         document.getElementById('prioritySort').style.display = 'none';
+    } else {
+        document.getElementById('dateSort').style.display = 'block';
+        document.getElementById('prioritySort').style.display = 'block';
     }
 })
 
 filterBtn.addEventListener('click', () => {
     let x = document.getElementById('lowPriorityPage');
-    if (x.style.display === 'none'){
-        document.getElementById('lowPriorityPage').style.display = 'block';
-        document.getElementById('mediumPriorityPage').style.display = 'block';
-        document.getElementById('highPriorityPage').style.display = 'block';
-    } else {
+    if (x.style.display === 'block'){
         document.getElementById('lowPriorityPage').style.display = 'none';
         document.getElementById('mediumPriorityPage').style.display = 'none';
         document.getElementById('highPriorityPage').style.display = 'none';
-    }
-})
+    } else {
+        document.getElementById('lowPriorityPage').style.display = 'block';
+        document.getElementById('mediumPriorityPage').style.display = 'block';
+        document.getElementById('highPriorityPage').style.display = 'block';
+    };
+});
 
 
 // on submit, pulls the info from the form and pushes it to an array for all tasks.
@@ -53,7 +53,7 @@ form.addEventListener('submit', () => {
 allTaskPageBtn.addEventListener('click', () => {
     clearPage();
     generateAllCards();
-})
+});
 
 // can implement a reverse sort too. Need CSS / styling changes first
 

@@ -4,7 +4,7 @@ import { createCard } from "./tasksDOM";
 
 let tasks = [];
 
-class createItem{
+class CreateItem{
     constructor(title, detail, priority, date, rawDate, identifier){
         this.title = title;
         this.detail = detail;
@@ -41,7 +41,7 @@ function pullTaskInfo(){
     }
     console.log(priorityFormatted);
 
-    let newTask = new createItem(titleInfo.value, inputDetails.value, priorityFormatted, formattedDate, taskDates.value, identifier);
+    let newTask = new CreateItem(titleInfo.value, inputDetails.value, priorityFormatted, formattedDate, taskDates.value, identifier);
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
     console.log(tasks);
