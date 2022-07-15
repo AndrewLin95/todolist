@@ -251,6 +251,7 @@ table {
     gap: 1.5em;
     margin: 2vh 2vw;
     height: 95%;
+    width: 95%;
     overflow-y: auto;
 }
 
@@ -268,6 +269,7 @@ table {
     display:flex;
     flex: auto;
     min-width: 0;
+    width: 1px;
 }
 
 .priorityDiv{
