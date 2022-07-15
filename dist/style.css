@@ -289,7 +289,8 @@ table {
 }
 
 .taskDate{
-    width: 14em;
+    width: 16em;
+    text-align: center;
 }
 
 .allTextDiv{
