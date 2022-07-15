@@ -73,6 +73,7 @@ table {
 #title{
     font-size: 3em;
     font-weight: bold;
+    flex-shrink: 0;
 }
 
 #navLinks{
@@ -164,6 +165,7 @@ table {
     top: calc(50vh - (25vh/2));
     left: calc(50vw - (35vw/2));
     width: 35vw;
+    min-width: 25em;
     height: 25vh;
     border: lightgray solid 1px;
 
@@ -177,6 +179,10 @@ table {
     padding-top: 1em;
     gap: 1em;
     width: 25%;
+}
+
+.addItem{
+    min-width: 5em;
 }
 
 #formDetails,
@@ -207,7 +213,7 @@ table {
 
 #cancel{
     width: 7.5%;
-    padding-right: 0.5em;
+    padding-right: 2em;
 }
 
 .subText{
@@ -263,6 +269,10 @@ background-color: #E2EAFC;
     border: 0px;
 }
 
+a, a:visited, a:active {
+    color: inherit;
+}
+
 /* card formatting */
 
 #allTasks{
@@ -298,6 +308,8 @@ background-color: #E2EAFC;
     align-items: center;
     word-wrap: normal;
     min-width: 10em;
+    max-width: 30em;
+    text-overflow: ellipsis;
 }
 
 .completeCheckBox{
