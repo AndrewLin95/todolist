@@ -242,37 +242,6 @@ table {
     height: 2em;
 }
 
-/* general formatting */
-
-input,
-textarea{
-    border: 0px;
-    background: transparent;
-    width: 100%;
-    outline: none;
-}
-
-.index{
-    background-color: #CCDBFD;
-}
-
-.header{
-    background-color: #B8B8FF;
-}
-
-.mainContent{
-background-color: #E2EAFC;
-}
-
-.transparent{
-    background: transparent;
-    border: 0px;
-}
-
-a, a:visited, a:active {
-    color: inherit;
-}
-
 /* card formatting */
 
 #allTasks{
@@ -316,4 +285,35 @@ a, a:visited, a:active {
     width: auto;
     height: auto;
     border:#b8bedd solid 1px;
+}
+
+/* general formatting */
+
+input,
+textarea{
+    border: 0px;
+    background: transparent;
+    width: 100%;
+    outline: none;
+}
+
+.index{
+    background-color: #CCDBFD;
+}
+
+.header{
+    background-color: #B8B8FF;
+}
+
+.mainContent{
+background-color: #E2EAFC;
+}
+
+.transparent{
+    background: transparent;
+    border: 0px;
+}
+
+a, a:visited, a:active {
+    color: inherit;
 }
