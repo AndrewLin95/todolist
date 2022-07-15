@@ -18,14 +18,13 @@
             <div id="index" class="index">
                 <div id="topIndex">
                     <button class='btn' id="allTaskPage">All Tasks</button>
-                    <button class='btn pageFilters' id="todayTaskPage">Today</button>
-                    <button class='btn pageFilters' id="weeklyTaskPage">Weekly</button>
-                    <button class='btn pageSorts' id="dateSort">Sort by Date</button>
-                    <button class='btn pageSorts' id="prioritySort">Sort by Priority</button>
-                    <button class='btn pageFilters' id="filteredPage">Filters</button>
-                    <button class='btn pageFilters' id="lowPriorityPage">Low Priority</button>
-                    <button class='btn pageFilters' id="mediumPriorityPage">Medium Priority</button>
-                    <button class='btn pageFilters' id="highPriorityPage">High Priority</button>
+                    <button class='btn' id="sortPage">Sort</button>
+                        <button class='btn pageSorts' id="dateSort">Sort by Date</button>
+                        <button class='btn pageSorts' id="prioritySort">Sort by Priority</button>
+                    <button class='btn' id="filteredPage">Filters</button>
+                        <button class='btn pageFilters' id="lowPriorityPage">Low Priority</button>
+                        <button class='btn pageFilters' id="mediumPriorityPage">Medium Priority</button>
+                        <button class='btn pageFilters' id="highPriorityPage">High Priority</button>
                 </div>
                 <div id="bottomIndex">
                     <button class='btn' id="addItemBtn"><i class="fa-solid fa-circle-plus fa-4x"></i></button>
@@ -49,7 +48,7 @@
                     </div>
                     <form id="formInput" onsubmit='return false'>
                         <div id="inputs">
-                            <input id='inputTitle' type="text" placeholder="Title: Groceries"/>
+                            <input id='inputTitle' type="text" placeholder="Title: Groceries" maxlength="35"/>
                             <textarea id='inputDetails' placeholder="Details: e.x milk, eggs, banana" rows="10" cols="50"></textarea>
                         </div>
                         <div id="formBottom">

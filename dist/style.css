@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+ol, ul, li {
 	list-style: none;
 }
 blockquote, q {
@@ -118,6 +118,13 @@ table {
     font-size: 1em;
     height: 2em;
     width: 80%;
+}
+
+.pageSorts,
+.pageFilters{
+    display: none;
+    padding-left: 2em;
+    font-size: 0.8em;
 }
 
 .btn:hover{
@@ -240,15 +247,15 @@ textarea{
 }
 
 .index{
-    background-color: #b8bedd;
+    background-color: #CCDBFD;
 }
 
 .header{
-    background-color: #efc3e6;
+    background-color: #B8B8FF;
 }
 
 .mainContent{
-background-color: #f0e6ef;
+background-color: #E2EAFC;
 }
 
 .transparent{
@@ -272,7 +279,7 @@ background-color: #f0e6ef;
     padding-left: 1em;
     padding-right: 1em;
     align-items: center;
-    background-color: #EDEDE9;
+    background-color: #D7E3FC;
 }
 
 .sideCardDiv{
@@ -282,10 +289,15 @@ background-color: #f0e6ef;
     height: 2em;
 }
 
+.taskDate{
+    width: 13em;
+}
+
 .cardText{
     display:flex;
-    justify-content: center;
     align-items: center;
+    word-wrap: normal;
+    min-width: 10em;
 }
 
 .completeCheckBox{
