@@ -124,29 +124,36 @@ function deleteTasks(uniqueIdentifier) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function updateCheckBoxStatus(checkBoxStatus, uniqueIdentifier) {
+function updateCheckBoxStatus(checkBoxToggle, uniqueIdentifier) {
     let newStatus = null;
-    if (!checkBoxStatus) {                          // TODO - why is this not updating the array. Goes from false -> true -> stays true
+    if (checkBoxToggle) {                          
         newStatus = true;
     } else {
         newStatus = false;
     }
 
+    // the entirety of below is used to modify a single variable within the object of arrays. checkIdentifier is used to selectively choose the position of the array at the unique identifier
     function checkIdentifier(value) {
         return value.identifier === uniqueIdentifier;
     }
 
+    // below function maps the specific object in its entirety to newTasks. the other indicies are returned as "undefined"
     let newTasks = tasks.map(obj => {                                   
         if (obj.identifier === uniqueIdentifier){
             return {...obj, checkBoxStatus: newStatus};
         }
     })
-    
-    function identifyIndex() {
+
+    // the returns the index of the array from the main array that we are looking for
+    function returnIndex() {
         return tasks.findIndex(checkIdentifier);
     }
 
-    tasks.splice(tasks.findIndex(checkIdentifier), 1, newTasks[3]);                 // TO DO - need to push the array number into newTasks here
+    // this assigns that raw value to a variable. for some reason the below splice function does not work when using that function directly
+    let indexValue = returnIndex();
+
+    // newTasks[indexValue] returns the entire object at that specific index. It cannot be written as newTasks.tasks.findIndex(checkIdentifier). Not sure why
+    tasks.splice(tasks.findIndex(checkIdentifier), 1, newTasks[indexValue]);                 
     localStorage.setItem("tasks", JSON.stringify(tasks));
     console.log(tasks);
 }

@@ -30,8 +30,9 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
     completeBox.setAttribute('type', 'checkbox');
     leftCardDiv.appendChild(completeBox);
 
+    let checkBoxToggle = checkBoxStatus;
     completeBox.addEventListener('click', () => {
-        if (checkBoxStatus === false){
+        if (!checkBoxToggle){
             detailBtn.className = 'detailBtn checked';
             editBtn.className ='editBtn transparent checked';
             deleteBtn.className ='deleteBtn transparent checked';
@@ -41,7 +42,7 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
             detailText.style.opacity = '0.5';
             taskDate.style.textDecoration = 'line-through';
             taskDate.style.opacity = '0.5';
-        } else {
+        } else if (checkBoxToggle){
             detailBtn.className = 'detailBtn';
             editBtn.className ='editBtn transparent';
             deleteBtn.className ='deleteBtn transparent';
@@ -52,7 +53,8 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
             taskDate.style.textDecoration = 'none';
             taskDate.style.opacity = '1';
         }
-        updateCheckBoxStatus(checkBoxStatus, identifier);
+        checkBoxToggle = !checkBoxToggle;
+        updateCheckBoxStatus(checkBoxToggle, identifier);
     })
 
     // create a div for the text and details.
@@ -139,6 +141,19 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
         allTasksDiv.removeChild(cardDiv);
         deleteTasks(identifier);
     })
+
+    // checks if the checkBoxStatus is true, if true, run this line to checkboxes when loaded
+    if (checkBoxStatus){
+        detailBtn.className = 'detailBtn checked';
+        editBtn.className ='editBtn transparent checked';
+        deleteBtn.className ='deleteBtn transparent checked';
+        titleText.style.textDecoration = 'line-through';
+        titleText.style.opacity = '0.5';
+        detailText.style.textDecoration = 'line-through';
+        detailText.style.opacity = '0.5';
+        taskDate.style.textDecoration = 'line-through';
+        taskDate.style.opacity = '0.5';
+    }
 }
 
 export {
