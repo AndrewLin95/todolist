@@ -36,7 +36,6 @@ function pullTaskInfo(){
     let newTask = new CreateItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate, taskDates.value, identifier, checkBoxStatus);
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log(tasks);
 }
 
 function pageInitialize() {

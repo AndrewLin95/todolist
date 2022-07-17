@@ -15,6 +15,7 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
 
     const priorityDiv = document.createElement('div');
     priorityDiv.className = 'priorityDiv';
+    priorityDiv.id = `priorityDiv${identifier}`;
     leftCardDiv.appendChild(priorityDiv);
     if (priority === '1'){
         priorityDiv.style.backgroundColor = 'green';
@@ -27,15 +28,18 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
     // create complete checkbox to left side of card
     const completeBox = document.createElement('input');
     completeBox.className = 'completeCheckBox';
+    completeBox.id = `completeCheckBox${identifier}`
     completeBox.setAttribute('type', 'checkbox');
     leftCardDiv.appendChild(completeBox);
 
+    // sets the toggle to the checkBoxStatus because checkBoxStatus is only ever retrieved once and doesnt get updated on change.
     let checkBoxToggle = checkBoxStatus;
     completeBox.addEventListener('click', () => {
         if (!checkBoxToggle){
             detailBtn.className = 'detailBtn checked';
             editBtn.className ='editBtn transparent checked';
             deleteBtn.className ='deleteBtn transparent checked';
+            priorityDiv.style.opacity = '0.5';
             titleText.style.textDecoration = 'line-through';
             titleText.style.opacity = '0.5';
             detailText.style.textDecoration = 'line-through';
@@ -46,6 +50,7 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
             detailBtn.className = 'detailBtn';
             editBtn.className ='editBtn transparent';
             deleteBtn.className ='deleteBtn transparent';
+            priorityDiv.style.opacity = '1';
             titleText.style.textDecoration = 'none';
             titleText.style.opacity = '1';
             detailText.style.textDecoration = 'none';
@@ -53,6 +58,7 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
             taskDate.style.textDecoration = 'none';
             taskDate.style.opacity = '1';
         }
+        // the array gets updated by the below line with whatever the state of the checkBox is when it is pressed
         checkBoxToggle = !checkBoxToggle;
         updateCheckBoxStatus(checkBoxToggle, identifier);
     })
@@ -144,6 +150,8 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
 
     // checks if the checkBoxStatus is true, if true, run this line to checkboxes when loaded
     if (checkBoxStatus){
+        document.getElementById(`completeCheckBox${identifier}`).checked = true;
+        priorityDiv.style.opacity = '0.5';
         detailBtn.className = 'detailBtn checked';
         editBtn.className ='editBtn transparent checked';
         deleteBtn.className ='deleteBtn transparent checked';
