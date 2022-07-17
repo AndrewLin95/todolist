@@ -1,8 +1,8 @@
-import { deleteTasks } from "./taskManipulation";
+import { deleteTasks, updateCheckBoxStatus } from "./taskManipulation";
 
 const allTasksDiv = document.querySelector('#allTasks');
 
-function createCard(title, detail, date, identifier, priority) {
+function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
     // create cardDiv
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cardDiv';
@@ -16,7 +16,6 @@ function createCard(title, detail, date, identifier, priority) {
     const priorityDiv = document.createElement('div');
     priorityDiv.className = 'priorityDiv';
     leftCardDiv.appendChild(priorityDiv);
-    console.log(priority);
     if (priority === '1'){
         priorityDiv.style.backgroundColor = 'green';
     } else if (priority === '2'){
@@ -31,9 +30,8 @@ function createCard(title, detail, date, identifier, priority) {
     completeBox.setAttribute('type', 'checkbox');
     leftCardDiv.appendChild(completeBox);
 
-    let tickBoxCheck = false;
     completeBox.addEventListener('click', () => {
-        if (!tickBoxCheck){
+        if (checkBoxStatus === false){
             detailBtn.className = 'detailBtn checked';
             editBtn.className ='editBtn transparent checked';
             deleteBtn.className ='deleteBtn transparent checked';
@@ -54,7 +52,7 @@ function createCard(title, detail, date, identifier, priority) {
             taskDate.style.textDecoration = 'none';
             taskDate.style.opacity = '1';
         }
-        tickBoxCheck = !tickBoxCheck;
+        updateCheckBoxStatus(checkBoxStatus, identifier);
     })
 
     // create a div for the text and details.

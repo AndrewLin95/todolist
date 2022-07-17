@@ -5,13 +5,14 @@ import { createCard } from "./tasksDOM";
 let tasks = [];
 
 class CreateItem{
-    constructor(title, detail, priority, date, rawDate, identifier){
+    constructor(title, detail, priority, date, rawDate, identifier, checkBoxStatus){
         this.title = title;
         this.detail = detail;
         this.priority = priority;
         this.date = date;
         this.rawDate = rawDate;
         this.identifier = identifier;
+        this.checkBoxStatus = checkBoxStatus;
     }
 }
 
@@ -30,9 +31,9 @@ function pullTaskInfo(){
     // generates a random number as the task identifier. Will be used to delete or modify the card
     let identifier = Math.floor(Math.random()*1000000)
 
-    console.log(priorityOptions.value)
+    let checkBoxStatus = false;
 
-    let newTask = new CreateItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate, taskDates.value, identifier);
+    let newTask = new CreateItem(titleInfo.value, inputDetails.value, priorityOptions.value, formattedDate, taskDates.value, identifier, checkBoxStatus);
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
     console.log(tasks);
@@ -80,7 +81,7 @@ function taskFilter(filter) {
 function generateFilteredCards() {
     let i = 0;
     while (i < filteredArray.length){
-        createCard(filteredArray[i].title, filteredArray[i].detail, filteredArray[i].date, filteredArray[i].identifier, filteredArray[i].priority);
+        createCard(filteredArray[i].title, filteredArray[i].detail, filteredArray[i].date, filteredArray[i].identifier, filteredArray[i].priority, filteredArray[i].checkBoxStatus);
         i++;
     }
 }
@@ -94,14 +95,14 @@ function taskSort(sort) {
         });
         let i = 0;
         while (i < sortedDates.length){
-            createCard(sortedDates[i].title, sortedDates[i].detail, sortedDates[i].date, sortedDates[i].identifier, sortedDates[i].priority);
+            createCard(sortedDates[i].title, sortedDates[i].detail, sortedDates[i].date, sortedDates[i].identifier, sortedDates[i].priority, sortedDates[i].checkBoxStatus);
             i++;
         }
     } else if (sort === 'priority'){
         let sortedPriorities = tasks.sort(function compare(a, b){return a.priority - b.priority});
         let i = 0;
         while (i < sortedPriorities.length){
-            createCard(sortedPriorities[i].title, sortedPriorities[i].detail, sortedPriorities[i].date, sortedPriorities[i].identifier, sortedPriorities[i].priority);
+            createCard(sortedPriorities[i].title, sortedPriorities[i].detail, sortedPriorities[i].date, sortedPriorities[i].identifier, sortedPriorities[i].priority, sortedPriorities[i].checkBoxStatus);
             i++;
         }
     }
@@ -110,7 +111,7 @@ function taskSort(sort) {
 function generateAllCards() {
     let i = 0;
     while (i < tasks.length){
-        createCard(tasks[i].title, tasks[i].detail, tasks[i].date, tasks[i].identifier, tasks[i].priority);
+        createCard(tasks[i].title, tasks[i].detail, tasks[i].date, tasks[i].identifier, tasks[i].priority, tasks[i].checkBoxStatus);
         i++;
     }
 }
@@ -123,4 +124,31 @@ function deleteTasks(uniqueIdentifier) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-export {pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, deleteTasks};
+function updateCheckBoxStatus(checkBoxStatus, uniqueIdentifier) {
+    let newStatus = null;
+    if (!checkBoxStatus) {                          // TODO - why is this not updating the array. Goes from false -> true -> stays true
+        newStatus = true;
+    } else {
+        newStatus = false;
+    }
+
+    function checkIdentifier(value) {
+        return value.identifier === uniqueIdentifier;
+    }
+
+    let newTasks = tasks.map(obj => {                                   
+        if (obj.identifier === uniqueIdentifier){
+            return {...obj, checkBoxStatus: newStatus};
+        }
+    })
+    
+    function identifyIndex() {
+        return tasks.findIndex(checkIdentifier);
+    }
+
+    tasks.splice(tasks.findIndex(checkIdentifier), 1, newTasks[3]);                 // TO DO - need to push the array number into newTasks here
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log(tasks);
+}
+
+export {pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, deleteTasks, updateCheckBoxStatus};
