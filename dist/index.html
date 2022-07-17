@@ -34,7 +34,7 @@
                     <button class='btn' id="addItemBtn"><i class="fa-solid fa-circle-plus fa-4x"></i></button>
                 </div>
             </div>
-            <div id="addItemForm">
+            <div id="addItemForm" class="popUp">
                 <div id="formCategorySelector" class="index">
                     <button class="btn addItem">Add Task</button>
                     <button class="btn addItem">Add Note</button>
@@ -50,8 +50,8 @@
                             <input id='inputTitle' type="text" placeholder="Title: Groceries" maxlength="35"/>
                             <textarea id='inputDetails' placeholder="Details: e.x milk, eggs, banana" rows="10" cols="50"></textarea>
                         </div>
-                        <div id="formBottom">
-                            <div id="leftFormBottom">
+                        <div class="formBottom">
+                            <div class="leftFormBottom">
                                 <div id="priority">
                                     Priority:
                                     <select id="priorityOptions">
@@ -67,8 +67,40 @@
                             <button id="submitBtn" type="submit">Submit</button>
                         </div>
                     </form>
+                    <!--form inputs-->
                 </div>
+                <!--Entire addItemForm-->
             </div>
+
+            <div id="editPopUp" class="popUp">
+                <form id="editForm" onsubmit="return false">
+                    <div id="editInputsSection">
+                        <div id='editHeader'>
+                            <input id="editInput" type="text" maxlength="35"/>
+                            <button class='btn' id="cancel"><i class="fa-solid fa-xmark fa-2x"></i></button>
+                        </div>
+                        <textarea id="editDetail" rows="10" cols="50"></textarea>
+                    </div>
+                    <div class="formBottom">
+                        <div class="leftFormBottom">
+                            <div id="editPriority">
+                                Priority:
+                                <select id="editPriorityOptions">
+                                    <option value='1' id="lowEdit">Low</option>
+                                    <option value='2' id="mediumEdit">Medium</option>
+                                    <option value='3' id="highEdit">High</option>
+                                </select>
+                            </div>
+                            <div id="editDate">
+                                <input id='editDateInput' type="date"/>
+                            </div>
+                        </div>
+                        <button id="confirmEditBtn" type="submit">Confirm Edit</button>
+                    </div>  
+                </form>
+
+            </div>
+
         </div>
     </div>
     <script src="main.js"></script>

@@ -135,6 +135,8 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
     editBtn.appendChild(editIcon);
     rightCardDiv.appendChild(editBtn);
 
+    
+
     // create Delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.className ='deleteBtn transparent';
