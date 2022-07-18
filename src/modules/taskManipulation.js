@@ -181,8 +181,9 @@ function editTasks(){
         return memoryID.identifier === tempID;
     }
 
+    // currentTask returns the specific object in the array referncing the unique identifier
     let currentTask = tasks.find(findObject);
-    console.log(currentTask);
+    // rewrites the currentTask object with changed values of the editForm
     currentTask.checkBoxStatus = tempCheckBoxStatus;
     currentTask.date = formattedDate;
     currentTask.rawDate = editTaskDates.value;
@@ -195,6 +196,7 @@ function editTasks(){
     }
     tasks.splice(tasks.findIndex(checkIdentifier), 1, currentTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    document.getElementById('editPopUp').style.display = 'none';
 }
 
 export {pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, deleteTasks, updateCheckBoxStatus, editInfoID, editInfoCheckBox, editTasks};
