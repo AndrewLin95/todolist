@@ -1,4 +1,4 @@
-import { addItemDisplayOn, closeForm, formReset, clearPage } from './modules/display';
+import { addItemDisplayOn, closeForm, formReset, clearPage, editFormReset } from './modules/display';
 import { pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, editTasks } from './modules/taskManipulation';
 import { createCard } from './modules/tasksDOM';
 
@@ -10,7 +10,6 @@ const closeFormBtn = document.querySelector('#cancel');
 const form = document.querySelector('#formInput');
 const sortBtn = document.querySelector('#sortPage');
 const filterBtn = document.querySelector('#filteredPage');
-const confirmEditBtn = document.querySelector('#confirmEditBtn');
 const editForm = document.querySelector('#editForm');
 
 addItemBtn.addEventListener('click', addItemDisplayOn);
@@ -58,6 +57,7 @@ form.addEventListener('submit', () => {
     pullTaskInfo();
     createCard(returnArray('last').title, returnArray('last').detail, returnArray('last').date, returnArray('last').rawDate, returnArray('last').identifier, returnArray('last').priority, returnArray('last').checkBoxStatus);
     formReset();
+    document.getElementById('addItemForm').style.display = 'none';
 });
 
 allTaskPageBtn.addEventListener('click', () => {
@@ -105,6 +105,8 @@ editForm.addEventListener('submit', () => {
     editTasks();
     clearPage();
     generateAllCards();
+    document.getElementById('editPopUp').style.display = 'none';
+    editFormReset();
 })
 
 // populates the page based on the localStorage value of the array

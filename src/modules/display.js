@@ -10,6 +10,10 @@ function formReset(){
     document.getElementById('formInput').reset();
 }
 
+function editFormReset(){
+    document.getElementById('editForm').reset();
+}
+
 function clearPage(){
     let allTasks = document.getElementById('allTasks');
     let eachCard = document.querySelectorAll('.cardDiv')
@@ -32,5 +36,6 @@ export {
     closeForm,
     formReset,
     clearPage,
-    updateEditForm
+    updateEditForm,
+    editFormReset
 };
