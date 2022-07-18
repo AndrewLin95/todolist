@@ -254,16 +254,30 @@ table {
     padding: 2em;
 }
 
+#cancelEdit{
+    width: 7.5%;
+    position: relative;
+    bottom: 1.5em;
+    left: 3em;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+#editInput,
+#editDetail{
+    background: #E2EAFC;
+    margin-bottom: 1em;
+}
+
 #editHeader{
     display: flex;
     width: auto;
 }
 
 #editDetail{
-    padding-top: 1em;
     vertical-align: top;
     resize: none;
-    border: blue 1px solid;
 }
 
 /* card formatting */
