@@ -19,9 +19,18 @@ function clearPage(){
     });
 }
 
+function updateEditForm(identifier, title, detail, priority, rawDate, checkBoxStatus){
+    document.getElementById('editInput').setAttribute('value', title);
+    document.getElementById('editDetail').textContent = detail;
+    document.getElementById('editPriorityOptions').value = priority;
+    document.getElementById('editDateInput').value = rawDate;
+    document.getElementById('editPopUp').style.display = 'flex';
+}
+
 export {
     addItemDisplayOn,
     closeForm,
     formReset,
-    clearPage
+    clearPage,
+    updateEditForm
 };

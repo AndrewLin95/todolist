@@ -1,8 +1,9 @@
-import { deleteTasks, updateCheckBoxStatus } from "./taskManipulation";
+import { deleteTasks, updateCheckBoxStatus, editInfoID, editInfoCheckBox } from "./taskManipulation";
+import { updateEditForm } from "./display";
 
 const allTasksDiv = document.querySelector('#allTasks');
 
-function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
+function createCard(title, detail, date, rawDate, identifier, priority, checkBoxStatus) {
     // create cardDiv
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cardDiv';
@@ -130,12 +131,17 @@ function createCard(title, detail, date, identifier, priority, checkBoxStatus) {
     // create Edit Button
     const editBtn = document.createElement('button');
     editBtn.className ='editBtn transparent';
+    editBtn.id = `editBtn${identifier}`;
     const editIcon = document.createElement('i');
     editIcon.className = "fa-solid fa-pen-to-square"
     editBtn.appendChild(editIcon);
     rightCardDiv.appendChild(editBtn);
 
-    
+    editBtn.addEventListener('click', () => {
+        updateEditForm(identifier, title, detail, priority, rawDate, checkBoxToggle);
+        editInfoID(identifier);
+        editInfoCheckBox(checkBoxToggle);
+    })
 
     // create Delete button
     const deleteBtn = document.createElement('button');

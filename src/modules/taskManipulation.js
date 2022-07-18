@@ -80,7 +80,7 @@ function taskFilter(filter) {
 function generateFilteredCards() {
     let i = 0;
     while (i < filteredArray.length){
-        createCard(filteredArray[i].title, filteredArray[i].detail, filteredArray[i].date, filteredArray[i].identifier, filteredArray[i].priority, filteredArray[i].checkBoxStatus);
+        createCard(filteredArray[i].title, filteredArray[i].detail, filteredArray[i].date, filteredArray[i].rawDate, filteredArray[i].identifier, filteredArray[i].priority, filteredArray[i].checkBoxStatus);
         i++;
     }
 }
@@ -94,14 +94,14 @@ function taskSort(sort) {
         });
         let i = 0;
         while (i < sortedDates.length){
-            createCard(sortedDates[i].title, sortedDates[i].detail, sortedDates[i].date, sortedDates[i].identifier, sortedDates[i].priority, sortedDates[i].checkBoxStatus);
+            createCard(sortedDates[i].title, sortedDates[i].detail, sortedDates[i].date, sortedDates[i].rawDate, sortedDates[i].identifier, sortedDates[i].priority, sortedDates[i].checkBoxStatus);
             i++;
         }
     } else if (sort === 'priority'){
         let sortedPriorities = tasks.sort(function compare(a, b){return a.priority - b.priority});
         let i = 0;
         while (i < sortedPriorities.length){
-            createCard(sortedPriorities[i].title, sortedPriorities[i].detail, sortedPriorities[i].date, sortedPriorities[i].identifier, sortedPriorities[i].priority, sortedPriorities[i].checkBoxStatus);
+            createCard(sortedPriorities[i].title, sortedPriorities[i].detail, sortedPriorities[i].date, sortedPriorities[i].rawDate, sortedPriorities[i].identifier, sortedPriorities[i].priority, sortedPriorities[i].checkBoxStatus);
             i++;
         }
     }
@@ -110,7 +110,7 @@ function taskSort(sort) {
 function generateAllCards() {
     let i = 0;
     while (i < tasks.length){
-        createCard(tasks[i].title, tasks[i].detail, tasks[i].date, tasks[i].identifier, tasks[i].priority, tasks[i].checkBoxStatus);
+        createCard(tasks[i].title, tasks[i].detail, tasks[i].date, tasks[i].rawDate, tasks[i].identifier, tasks[i].priority, tasks[i].checkBoxStatus);
         i++;
     }
 }
@@ -157,4 +157,44 @@ function updateCheckBoxStatus(checkBoxToggle, uniqueIdentifier) {
     console.log(tasks);
 }
 
-export {pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, deleteTasks, updateCheckBoxStatus};
+let tempID = ''
+function editInfoID(identifier){
+    tempID = identifier
+}
+
+let tempCheckBoxStatus = '';
+function editInfoCheckBox(checkBoxStatus){
+    tempCheckBoxStatus = checkBoxStatus;
+}
+
+function editTasks(){
+    const editTitle = document.querySelector('#editInput');
+    const editDetail = document.querySelector('#editDetail');
+    const editPriority = document.querySelector('#editPriorityOptions');
+    const editTaskDates = document.querySelector('#editDateInput');
+
+    let isoDateUTC = editTaskDates.value + "T:14:00:00";                                    
+    let dateEST = formatInTimeZone(isoDateUTC, 'Canada/Eastern','yyyy-MM-dd')
+    let formattedDate = format(new Date(parseISO(dateEST)), "PPPP");
+
+    function findObject(memoryID) {
+        return memoryID.identifier === tempID;
+    }
+
+    let currentTask = tasks.find(findObject);
+    console.log(currentTask);
+    currentTask.checkBoxStatus = tempCheckBoxStatus;
+    currentTask.date = formattedDate;
+    currentTask.rawDate = editTaskDates.value;
+    currentTask.priority = editPriority.value;
+    currentTask.title = editTitle.value;
+    currentTask.detail = editDetail.value;
+
+    function checkIdentifier(value) {
+        return value.identifier === tempID;
+    }
+    tasks.splice(tasks.findIndex(checkIdentifier), 1, currentTask);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+export {pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, deleteTasks, updateCheckBoxStatus, editInfoID, editInfoCheckBox, editTasks};

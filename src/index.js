@@ -1,5 +1,5 @@
 import { addItemDisplayOn, closeForm, formReset, clearPage } from './modules/display';
-import { pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards } from './modules/taskManipulation';
+import { pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, editTasks } from './modules/taskManipulation';
 import { createCard } from './modules/tasksDOM';
 
 const allTaskPageBtn = document.querySelector('#allTaskPage');
@@ -10,6 +10,8 @@ const closeFormBtn = document.querySelector('#cancel');
 const form = document.querySelector('#formInput');
 const sortBtn = document.querySelector('#sortPage');
 const filterBtn = document.querySelector('#filteredPage');
+const confirmEditBtn = document.querySelector('#confirmEditBtn');
+const editForm = document.querySelector('#editForm');
 
 addItemBtn.addEventListener('click', addItemDisplayOn);
 closeFormBtn.addEventListener('click', closeForm);
@@ -54,7 +56,7 @@ filterBtn.addEventListener('click', () => {
 // if i press the submit button, goes to main page??
 form.addEventListener('submit', () => {
     pullTaskInfo();
-    createCard(returnArray('last').title, returnArray('last').detail, returnArray('last').date, returnArray('last').identifier, returnArray('last').priority, returnArray('last').checkBoxStatus);
+    createCard(returnArray('last').title, returnArray('last').detail, returnArray('last').date, returnArray('last').rawDate, returnArray('last').identifier, returnArray('last').priority, returnArray('last').checkBoxStatus);
     formReset();
 });
 
@@ -62,8 +64,6 @@ allTaskPageBtn.addEventListener('click', () => {
     clearPage();
     generateAllCards();
 });
-
-// can implement a reverse sort too. Need CSS / styling changes first
 
 pageSorts.forEach((page) => {
     page.addEventListener('click', () => {
@@ -84,7 +84,7 @@ pageFilters.forEach((page) => {
     page.addEventListener('click', () => {
         let filter = page.id;
         clearPage();
-        switch (filter) {                       // if i just remove the add button, it wont need to automatically refresh.... add only available on main page :D
+        switch (filter) {                       
             case 'lowPriorityPage':
                 taskFilter('low');
                 break;
@@ -100,6 +100,12 @@ pageFilters.forEach((page) => {
         generateFilteredCards();
     })
 });
+
+editForm.addEventListener('submit', () => {
+    editTasks();
+    clearPage();
+    generateAllCards();
+})
 
 // populates the page based on the localStorage value of the array
 pageInitialize();
