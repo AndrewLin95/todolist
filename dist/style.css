@@ -249,7 +249,7 @@ table {
 #editPopUp{
     display:none;
     background: #D7E3FC;
-    height: 17vh;
+    height: 14em;
     width: 30vw;
     max-width: 35em;
     padding: 2em;
@@ -259,7 +259,7 @@ table {
     width: 7.5%;
     position: relative;
     bottom: 1.5em;
-    left: 3em;
+    left: 1em;
     padding: 0px;
     margin: 0px;
     border: 0px;
