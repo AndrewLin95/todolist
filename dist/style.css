@@ -251,6 +251,7 @@ table {
     background: #D7E3FC;
     height: 17vh;
     width: 30vw;
+    max-width: 35em;
     padding: 2em;
 }
 
