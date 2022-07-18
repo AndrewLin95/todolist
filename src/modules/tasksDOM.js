@@ -138,7 +138,7 @@ function createCard(title, detail, date, rawDate, identifier, priority, checkBox
     rightCardDiv.appendChild(editBtn);
 
     editBtn.addEventListener('click', () => {
-        updateEditForm(identifier, title, detail, priority, rawDate, checkBoxToggle);
+        updateEditForm(title, detail, priority, rawDate);
         editInfoID(identifier);
         editInfoCheckBox(checkBoxToggle);
     })

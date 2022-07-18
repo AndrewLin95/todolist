@@ -19,7 +19,7 @@ function clearPage(){
     });
 }
 
-function updateEditForm(identifier, title, detail, priority, rawDate, checkBoxStatus){
+function updateEditForm(title, detail, priority, rawDate){
     document.getElementById('editInput').setAttribute('value', title);
     document.getElementById('editDetail').textContent = detail;
     document.getElementById('editPriorityOptions').value = priority;
