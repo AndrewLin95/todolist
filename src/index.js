@@ -1,4 +1,4 @@
-import { addItemDisplayOn, closeForm, formReset, clearPage, editFormReset } from './modules/display';
+import { addItemDisplayOn, closeForm, formReset, clearPage, editFormReset, updateSortBtn, updateFilterBtn } from './modules/display';
 import { pullTaskInfo, pageInitialize, returnArray, taskFilter, generateFilteredCards, taskSort, generateAllCards, editTasks } from './modules/taskManipulation';
 import { createCard } from './modules/tasksDOM';
 
@@ -16,37 +16,12 @@ addItemBtn.addEventListener('click', addItemDisplayOn);
 closeFormBtn.addEventListener('click', closeForm);
 
 sortBtn.addEventListener('click', () => {
-    let x = document.getElementById('dateSort');
-    if (x.style.display === 'block'){
-        document.getElementById('sortPage').style.fontWeight = '400';
-        sortBtn.textContent = 'Sort';
-        document.getElementById('dateSort').style.display = 'none';
-        document.getElementById('prioritySort').style.display = 'none';
-    } else {
-        document.getElementById('sortPage').style.fontWeight = 'bolder';
-        sortBtn.textContent = '//  Sort';
-        document.getElementById('dateSort').style.display = 'block';
-        document.getElementById('prioritySort').style.display = 'block';
-    }
+    updateSortBtn();
 })
 
 filterBtn.addEventListener('click', () => {
-    let x = document.getElementById('lowPriorityPage');
-    if (x.style.display === 'block'){
-        document.getElementById('filteredPage').style.fontWeight = '400';
-        filterBtn.textContent = 'Filters';
-        document.getElementById('lowPriorityPage').style.display = 'none';
-        document.getElementById('mediumPriorityPage').style.display = 'none';
-        document.getElementById('highPriorityPage').style.display = 'none';
-    } else {
-        document.getElementById('filteredPage').style.fontWeight = 'bolder';
-        filterBtn.textContent = '//  Filters';
-        document.getElementById('lowPriorityPage').style.display = 'block';
-        document.getElementById('mediumPriorityPage').style.display = 'block';
-        document.getElementById('highPriorityPage').style.display = 'block';
-    };
+    updateFilterBtn();
 });
-
 
 // on submit, pulls the info from the form and pushes it to an array for all tasks.
 // card gets created based on the last task inputted into the array
