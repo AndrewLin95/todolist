@@ -247,7 +247,7 @@ table {
 
 /* formatting for edit */
 #editPopUp{
-    display:flex;
+    display:none;
     background: #D7E3FC;
     height: 17vh;
     width: 30vw;
