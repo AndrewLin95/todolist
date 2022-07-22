@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="content">
+        <div id="navBar" class="header">
+            <div id="title">To Do List <i class="fa-solid fa-clipboard-list"></i></div>
+            <ul id="navLinks">
+                <li> <a href='https://github.com/AndrewLin95/todolist'><i class="fa-brands fa-github fa-2x"></i></a> </li>
+            </ul>
+        </div>
+        <div id="bottom">
+            <div id="index" class="index">
+                <div id="topIndex">
+                    <button class='btn' id="allTaskPage">All Tasks</button>
+                    <button class='btn' id="sortPage">Sort</button>
+                        <button class='btn pageSorts' id="dateSort">Sort by Date</button>
+                        <button class='btn pageSorts' id="prioritySort">Sort by Priority</button>
+                    <button class='btn' id="filteredPage">Filters</button>
+                        <button class='btn pageFilters' id="lowPriorityPage">Low Priority</button>
+                        <button class='btn pageFilters' id="mediumPriorityPage">Medium Priority</button>
+                        <button class='btn pageFilters' id="highPriorityPage">High Priority</button>
+                </div>
+            </div>
+            <div id="pages" class="mainContent">
+                
+                <div id="allTasks"></div>
+
+                <div id="bottomMain">
+                    <button class='btn' id="addItemBtn"><i class="fa-solid fa-circle-plus fa-4x"></i></button>
+                </div>
+            </div>
+            <div id="addItemForm" class="popUp">
+                <div id="formCategorySelector" class="index">
+                    <button class="btn addItem">Add Task</button>
+                    <button class="btn addItem">Add Note</button>
+                </div>
+                <div id="formDetails" class="mainContent">
+                    <div id="formHeader" class="header">  
+                        <div class="subText">Create a New...</div>
+                        <button class='btn' id="cancel"><i class="fa-solid fa-xmark fa-2x"></i></button>
+                    </div>
+                    <form id="formInput" onsubmit='return false'>
+                        <div id="inputs">
+                            <input id='inputTitle' type="text" placeholder="Title: Groceries" maxlength="35"/>
+                            <textarea id='inputDetails' placeholder="Details: e.x milk, eggs, banana" rows="10" cols="50"></textarea>
+                        </div>
+                        <div class="formBottom">
+                            <div class="leftFormBottom">
+                                <div id="priority">
+                                    Priority:
+                                    <select id="priorityOptions">
+                                        <option value='1' id="low">Low</option>
+                                        <option value='2' id="medium">Medium</option>
+                                        <option value='3' id="high">High</option>
+                                    </select>
+                                </div>
+                                <div id="date">
+                                    <input id='dateInput' type="date" value="2022-01-01"/>
+                                </div>
+                            </div>
+                            <button id="submitBtn" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    <!--form inputs-->
+                </div>
+                <!--Entire addItemForm-->
+            </div>
+
+            <div id="editPopUp" class="popUp">
+                <form id="editForm" onsubmit="return false">
+                    <div id="editInputsSection">
+                        <div id='editHeader'>
+                            <input id="editInput" type="text" maxlength="35"/>
+                            <button class='btn' id="cancelEdit"><i class="fa-solid fa-xmark fa-2x"></i></button>
+                        </div>
+                        <textarea id="editDetail" rows="10" cols="72"></textarea>
+                    </div>
+                    <div class="formBottom">
+                        <div class="leftFormBottom">
+                            <div id="editPriority">
+                                Priority:
+                                <select id="editPriorityOptions">
+                                    <option value='1' id="lowEdit">Low</option>
+                                    <option value='2' id="mediumEdit">Medium</option>
+                                    <option value='3' id="highEdit">High</option>
+                                </select>
+                            </div>
+                            <div id="editDate">
+                                <input id='editDateInput' type="date"/>
+                            </div>
+                        </div>
+                        <button id="confirmEditBtn" type="submit">Confirm Edit</button>
+                    </div>  
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://kit.fontawesome.com/bb58922bd7.js" crossorigin="anonymous"></script>
+  </body>
+</html>
